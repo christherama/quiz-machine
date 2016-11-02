@@ -1,9 +1,21 @@
 package co.ramacciotti.question;
 
+import co.ramacciotti.answer.Answer;
 import co.ramacciotti.core.AbstractEntity;
 
-import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-public class Question extends AbstractEntity {
+@MappedSuperclass
+public abstract class Question extends AbstractEntity {
+    private String text;
+
+    public abstract boolean isCorrect(Answer answer);
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }
